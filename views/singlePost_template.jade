@@ -1,0 +1,28 @@
+extends layout
+
+block content
+    if username
+      p
+        h4(style='text-align: right;') welcome #{username} &nbsp
+         a(href='/newPost') New post 
+         &nbsp&nbsp
+         a(href='/logout') Logout 
+    h1
+     a(href='/') My Blog
+    h3 posted on #{post.date}
+    h4 #{post.title}
+    hr
+    p #{post.body}
+    p
+    | Tags - find out how to display tags
+    p
+    | posted by #{post.author} #{post.time}
+    h6(style='text-align: right;')
+    if post.comments 
+          - length = post.comments.length
+    else
+          - length = 0
+    td.utility #{sprintf(format,length)}  &nbsp
+     a(href='/comments/#{post.permalink}') comments
+    
+    

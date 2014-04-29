@@ -1,0 +1,38 @@
+extends layout
+
+block content
+    if username
+        p 
+            h4(style='text-align: right;') Welcome #{username} &nbsp
+             a(href='/newPost') New post
+             &nbsp&nbsp&nbsp
+             a(href='/logout') Logout 
+    else
+        p
+            h4(style='text-align: right;') 
+             a(href='/login') Log In
+             &nbsp&nbsp&nbsp
+             a(href='/signup') Sign up
+    h1 My Blog
+    for post in myposts
+        h2 posted #{post.date.toDateString()} at #{post.date.toLocaleTimeString()}
+        h4 #{post.title}
+        hr
+        p #{post.body}
+        p
+        if post.labels
+            | tagged under #{post.labels}
+        p
+        | posted by #{post.author} #{post.time}
+        h6(style='text-align: right;')
+        - permalink="hi"
+        
+        if post.comments 
+            - length = post.comments.length
+        else
+            - length = 0
+        td.utility #{sprintf(format,length)}  &nbsp
+        a(href='/comments/#{post.permalink}') comments
+        
+    
+    

@@ -1,0 +1,37 @@
+extends layout
+
+block content
+    h1  
+     a(href='/') My Blog
+    div(style='width: 100%;')
+      div(style='float: left; width: 40%;')
+        h2  #{post.title}
+        hr
+        | #{post.body}
+        br
+        if post.comments
+            h4 Comments:
+            for comment in post.comments
+                | #{comment.body}
+                br
+                | #{comment.author} on #{comment.date.toDateString()} at #{comment.date.toLocaleTimeString()}
+                br 
+                br
+      div(style='float: right; width: 60%;')
+        form(method='post' action="/newComment")
+         fieldset
+            legend Leave your comment
+            h2
+            input(type='hidden' name='permalink' value='#{post.permalink}')
+            p
+                | Author:
+                input(type='text', name='commentName', size='100', placeholder='Enter your name', required)
+            p
+                | Email:
+                input(type='EMAIL', name='commentEmail', size='100', placeholder='Enter your email', required)
+            p
+                | Comment:
+                br
+                textarea(name='commentBody', cols='80', rows='10', placeholder='Enter your comment', required)
+         p
+            input(type='submit', value='Publish your comment')

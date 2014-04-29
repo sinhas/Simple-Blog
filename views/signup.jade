@@ -1,0 +1,27 @@
+extends layout
+
+block content
+ h1
+  a(href='/') My Blog
+ form(method='post')
+     fieldset
+          legend Enter your info
+          p
+            label 
+              | Name: 
+              input(type='text',name='username',placeholder='Enter your name',required)
+          p
+            label 
+              | Password: 
+              input(type='password',name='password',placeholder='Enter your password',required)
+          p
+            label 
+              | Reenter Password: 
+              input(type='password',name='rePassword',placeholder='Re-Enter your password',required)
+          p
+            label 
+              | Email (optional): 
+              input(type='email',name='email',placeholder='Enter your email')
+     p
+      input(type='submit', value='Submit')
+        

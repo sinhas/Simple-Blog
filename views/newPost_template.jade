@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    h1  
+     a(href='/') My Blog
+    form(method='post' action="/newPost")
+      h2 Title
+      input(type='text', name='subject', size='120')
+      br
+      h2
+        | Blog Entry
+        h2
+          textarea(name='body', cols='120', rows='10')
+          br
+          h2 Labels
+          | Comma separated, please
+          br
+          input(type='text', name='labels', size='120')
+          br
+          br
+          input(type='submit', value='Publish')
